@@ -10,7 +10,7 @@ module.exports = {
 
       next();
     }
-    catch{
+    catch(err){
       res.status(401).json({message: 'Authentication failed'});
     }
   }

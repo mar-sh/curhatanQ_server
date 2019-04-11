@@ -5,6 +5,7 @@ const curhatanSchema = new Schema({
   title: String,
   description: String,
   url: String,
+  isPublic: Boolean,
   userId: {
     type: Schema.Types.ObjectId, 
     ref: 'User'

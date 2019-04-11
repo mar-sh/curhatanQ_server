@@ -14,6 +14,6 @@ const {
 } = Controller;
 
 router.post('/login', postLogin);
-router,get('/logout', getLogout)
+router.post('/logout', getLogout)
 
 module.exports = router;
