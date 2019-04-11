@@ -28,7 +28,7 @@ module.exports = {
         if (user) {
           const token = tokenize(user._id, user.email)
 
-          res.status(200).json({ message: 'WELCOME', token, user })
+          res.status(200).json({ message: 'WELCOME', token, userId: user._id })
         } else {
           const fullname = currentUser.name;
           const email = currentUser.email;
@@ -46,7 +46,7 @@ module.exports = {
       .then((user) => {
         const token = tokenize(user._id, user.email)
 
-        res.status(201).json({ message: 'WELCOME', token, user })
+        res.status(201).json({ message: 'WELCOME', token, userId: user._id })
       })
       .catch((err) => {
         res.status(500).json({ message: err.message })
