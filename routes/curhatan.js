@@ -2,12 +2,25 @@ const express = require('express');
 const router = express.Router();
 
 const image = require('../helper/images')
-const curhatanController = require('../controllers/curhatan.js')
+const Controller = require('../controllers/curhatan');
+const Middleware = require('../middleware/middleware');
 
-router.get('/', curhatanController.getAll)
-router.get('/my-curhat', curhatanController.getCurhatByUser)
-router.get('/:id', curhatanController.getCurhatById)
-router.post('/', image.multer.single('image'), image.sendUploadToGCS, curhatanController.addCurhat)
-router.delete('/:id', curhatanController.deleteCurhat)
+const {
+  userAuthentication
+} = Middleware
+
+const {
+  getAllCurhat,
+  getCurhatByUser,
+  getCurhatById,
+  postCreateCurhat,
+  deleteCurhat
+} = Controller
+
+router.get('/', getAllCurhat)
+router.get('/my-curhat/:userID', getCurhatByUser)
+router.get('/:curhatID', getCurhatById)
+router.post('/:userID', image.multer.single('image'), image.sendUploadToGCS, postCreateCurhat)
+router.delete('/:userID/delete/:curhatID', deleteCurhat)
 
 module.exports = router

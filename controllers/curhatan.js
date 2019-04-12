@@ -1,7 +1,8 @@
 const Curhat = require('../models/Curhatan')
 
-class CurhatController {
-    static getAll (req, res) {
+module.exports = {
+
+    getAllCurhat (req, res) {
         Curhat.find({
             isPublic: true
         })
@@ -11,9 +12,9 @@ class CurhatController {
         .catch(err => {
             res.status(500).json(err)
         })
-    }
+    },
 
-    static getCurhatByUser (req, res) {
+    getCurhatByUser (req, res) {
         Curhat.find({
             userId: req.body.userId
         })
@@ -23,9 +24,9 @@ class CurhatController {
         .catch(err => {
             res.status(500).json(err)
         })
-    }
+    },
 
-    static getCurhatById (req, res) {
+    getCurhatById (req, res) {
         Curhat.findOne({
             _id: req.params.id
         })
@@ -35,9 +36,9 @@ class CurhatController {
         .catch(err => {
             res.status(500).json(err)
         })
-    }
+    },
 
-    static addCurhat (req, res) {
+    postCreateCurhat (req, res) {
         Curhat.create({
             ...body,
             url: req.file ? req.file.cloudStoragePublicUrl : "https://blkbekasi.kemnaker.go.id/subbagiankeuangan/assets-back-end/dist/img/image-not-available.png",
@@ -48,9 +49,9 @@ class CurhatController {
         .catch(err => {
             res.status(500).json(err)
         })
-    }
+    },
 
-    static deleteCurhat (req, res) {
+    deleteCurhat (req, res) {
         Curhat.findOneAndDelete({
             _id: req.params.id
         })
@@ -63,6 +64,5 @@ class CurhatController {
             res.status(500).json(err)
         })
     }
-}
 
-module.exports = CurhatController
+}
