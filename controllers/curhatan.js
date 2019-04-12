@@ -48,8 +48,9 @@ module.exports = {
 
     postCreateCurhat (req, res) {
         Curhat.create({
-            ...body,
+            ...req.body,
             url: req.file ? req.file.cloudStoragePublicUrl : "https://blkbekasi.kemnaker.go.id/subbagiankeuangan/assets-back-end/dist/img/image-not-available.png",
+            userId: req.params.userID
         })
         .then(curhat => {
             res.status(201).json(curhat)
