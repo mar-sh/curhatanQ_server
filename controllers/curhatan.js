@@ -2,6 +2,14 @@ const Curhat = require('../models/Curhatan')
 
 module.exports = {
 
+    testAuthentication(req, res) {
+        res.status(200).json({message: 'AUTHENTICATED'});
+    },
+
+    testAuthorization(req, res) {
+        res.status(200).json({message: 'AUTHORIZED'});
+    },
+
     getAllCurhat (req, res) {
         Curhat.find({
             isPublic: true
@@ -28,7 +36,7 @@ module.exports = {
 
     getCurhatById (req, res) {
         Curhat.findOne({
-            _id: req.params.id
+            _id: req.params.curhatID
         })
         .then(curhat => {
             res.status(200).json(curhat)
@@ -53,7 +61,7 @@ module.exports = {
 
     deleteCurhat (req, res) {
         Curhat.findOneAndDelete({
-            _id: req.params.id
+            _id: req.params.curhatID
         })
         .then(() => {
             res.status(200).json({
