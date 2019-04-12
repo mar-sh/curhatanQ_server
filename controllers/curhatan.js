@@ -38,8 +38,10 @@ class CurhatController {
     }
 
     static addCurhat (req, res) {
+        console.log('masuk')
+        console.log(req.body)
         Curhat.create({
-            ...body,
+            ...req.body,
             url: req.file ? req.file.cloudStoragePublicUrl : "https://blkbekasi.kemnaker.go.id/subbagiankeuangan/assets-back-end/dist/img/image-not-available.png",
         })
         .then(curhat => {
