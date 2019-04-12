@@ -7,6 +7,10 @@ module.exports = {
     return bcrypt.hashSync(password, 8);
   },
 
+  bcryptVerify(password, hash) {
+    return bcrypt.compareSync(password, hash);
+  },
+
   tokenize(id, email) {
     return jwt.sign({
       id,

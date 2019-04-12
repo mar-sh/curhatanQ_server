@@ -9,11 +9,15 @@ const {
 } = Middleware
 
 const {
+  postRegister,
   postLogin,
+  postGoogleLogin,
   getLogout
 } = Controller;
 
-router.post('/login', postLogin);
-router.post('/logout', getLogout)
+router.post('/register', postRegister)
+router.post('/signin', postLogin )
+router.post('/login', postGoogleLogin)
+router.get('/logout', getLogout)
 
 module.exports = router;

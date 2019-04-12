@@ -2,7 +2,7 @@
   "name": "curhatanQ_server",
   "version": "1.0.0",
   "description": "text-sharing app",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
     "start": "node server.js",
     "dev": "nodemon server.js",
@@ -20,6 +20,7 @@
   },
   "homepage": "https://github.com/mar-sh/curhatanQ_server#readme",
   "dependencies": {
+    "@google-cloud/storage": "^2.5.0",
     "axios": "^0.18.0",
     "bcrypt": "^3.0.5",
     "cors": "^2.8.5",
